@@ -41,7 +41,7 @@ function findResourcesByID(id){
 function findTasks(){
     return db('tasks as t')
     .join('projects as p', 't.project_id', 'p.project_id')
-    .select('t.name', 't.description','t.completed', 'p.project_name', 'p.project_description')
+    .select('t.name', 't.description', 'p.project_name', 'p.project_description')
 }
 
 function findTasksByID(id){
