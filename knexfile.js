@@ -21,6 +21,12 @@ module.exports = {
           conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
         },
       },
+      typeCast: function(field, next) {
+        if (field.type == 'BOOLEAN' && field.length == 1) {
+            return (field.string() == '1'); // 1 = true, 0 = false
+        }
+        return next();
+    }
     }, 
   };
   
